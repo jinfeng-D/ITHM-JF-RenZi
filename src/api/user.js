@@ -1,24 +1,29 @@
+// import request from '@/utils/request'
 import request from "@/utils/request";
-
+//登录接口
 export function login(data) {
   return request({
-    url: "/vue-admin-template/user/login",
+    url: "/sys/login", // 因为所有的接口都要跨域 表示所有的接口要带 /api
     method: "post",
     data,
   });
 }
-
-export function getInfo(token) {
+// 获取用户的基本资料
+export function getUserInfo() {
   return request({
-    url: "/vue-admin-template/user/info",
-    method: "get",
-    params: { token },
+    url: "/sys/profile",
+    method: "POST",
   });
 }
+export function getInfo(token) {}
 
-export function logout() {
+export function logout() {}
+/** *
+ *
+ * 获取用户的基本信息  现在写它 完全是为了显示头像
+ * **/
+export function getUserDetailById(id) {
   return request({
-    url: "/vue-admin-template/user/logout",
-    method: "post",
+    url: `/sys/user/${id}`,
   });
 }
